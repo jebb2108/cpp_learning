@@ -1,30 +1,33 @@
-#include<iostream>
-#include<cstdlib>
+#include <iostream>
+#include <cstdlib>
 using namespace std;
 
 // Функция для считывания расстояния в милях:
-double getDistMile() {
+double getDistMile()
+{
     // Переменная для записи результата функции:
     double dist;
     // Запрос на ввод расстояния в милях:
-    cout<<"Укажите расстояние в милях: ";
+    cout << "Укажите расстояние в милях: ";
     // Считывание значения для расстояния в милях:
-    cin>>dist;
+    cin >> dist;
     // Результат функции:
     return dist;
 }
 // Функция для перевода милей в киллометры:
-double getDistKm(double dist) {
+double getDistKm(double dist)
+{
     // В одной миле километров:
-    double distMile=1.609344;
+    double distMile = 1.609344;
     // Результат функции:
-    return dist*distMile;
+    return dist * distMile;
 }
 
-int main() {
+int main()
+{
     // Переменная для записи расстояния в милях:
-    double distMile=getDistMile();
+    double distMile = getDistMile();
     // Выполнение вычислений:
-    cout<<"Расстояние (в км): "<<getDistKm(distMile)<<endl;
+    cout << "Расстояние (в км): " << getDistKm(distMile) << endl;
     return 0;
 }

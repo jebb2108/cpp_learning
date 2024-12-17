@@ -1,27 +1,29 @@
-#include<iostream>
-#include<cstdlib>
+#include <iostream>
+#include <cstdlib>
 using namespace std;
 
-int main() {
+int main()
+{
     // Константа для определения размера массива:
-    const int n=5;
+    const int n = 5;
     // Создание целочислительного массива:
-    int bnm[n+1];
+    int bnm[n + 1];
     // Индексная переменная:
-    int k=0;
+    int k = 0;
     // Первый элемент массива:
-    bnm[0]=1;
+    bnm[0] = 1;
     // Отображение значения элемента массива:
-    cout<<bnm[0];
+    cout << bnm[0];
     // Оператор цикла для заполнения массива:
-    while (k<n) {
+    while (k < n)
+    {
         // Значение элемента массива:
-        bnm[k+1]=bnm[k]*(n-k)/(k+1);
+        bnm[k + 1] = bnm[k] * (n - k) / (k + 1);
         // Отображение значения элемента массива:
-        cout<<" "<<bnm[k+1];
+        cout << " " << bnm[k + 1];
         // Изменение значения индексной переменной:
         k++;
     }
-    cout<<endl;
+    cout << endl;
     return 0;
 }

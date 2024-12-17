@@ -1,18 +1,19 @@
-#include<iostream>
-#include<cstdlib>
+#include <iostream>
+#include <cstdlib>
 using namespace std;
 
-int main() {
+int main()
+{
     int fathoms, arsh;
-    cout<<"Введи сажини: ";
-    cin>>fathoms;
-    cout<<"Введи аршени: ";
-    cin>>arsh;
+    cout << "Введи сажини: ";
+    cin >> fathoms;
+    cout << "Введи аршени: ";
+    cin >> arsh;
 
     // Объявляю константы:
     const double metersInFathoms = 2.16;
     const int arshansInFathoms = 3;
-    
+
     // Подчситываю кол-во метров:
     int distM, distCm;
     int all_fathoms = fathoms + (arsh / arshansInFathoms);
@@ -22,6 +23,6 @@ int main() {
     distCm = (arsh % arshansInFathoms) / arshansInFathoms * 100;
 
     // Вывожу результат:
-    cout<<"Итого метров: "<<distM<<" сантметров: "<<distCm<<endl;
+    cout << "Итого метров: " << distM << " сантметров: " << distCm << endl;
     return 0;
 }

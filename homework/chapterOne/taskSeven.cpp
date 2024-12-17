@@ -1,22 +1,25 @@
-#include<iostream>
-#include<cstdlib>
+#include <iostream>
+#include <cstdlib>
 using namespace std;
 
-int getKilometers() {
+int getKilometers()
+{
     int dKm;
-    cout<<"Enter distance in kilometers: ";
-    cin>>dKm;
+    cout << "Enter distance in kilometers: ";
+    cin >> dKm;
     return dKm;
 }
 
-int getMeters() {
+int getMeters()
+{
     int dM;
-    cout<<"Enter distance in meters: ";
-    cin>>dM;
+    cout << "Enter distance in meters: ";
+    cin >> dM;
     return dM;
 }
 
-int convertMagnitudes(int distKm, int distMeters) {
+int convertMagnitudes(int distKm, int distMeters)
+{
     double final_dist;
     const double kmInMiles = 0.621371;
     const double metersInFeet = 3.28084;
@@ -30,13 +33,14 @@ int convertMagnitudes(int distKm, int distMeters) {
     return feet_in_total;
 }
 
-int main() {
+int main()
+{
     int dKm = getKilometers();
     int dM = getMeters();
     const int feetInMile = 5280;
     int total_feet = convertMagnitudes(dKm, dM);
     int miles = total_feet / feetInMile;
     int feet = total_feet - miles * feetInMile;
-    cout<<"Miles in total: "<<miles<<" and feet: "<<feet<<endl;
+    cout << "Miles in total: " << miles << " and feet: " << feet << endl;
     return 0;
 }

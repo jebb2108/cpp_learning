@@ -1,19 +1,23 @@
-#include<iostream>
-#include<cstdlib>
+#include <iostream>
+#include <cstdlib>
 using namespace std;
 
-int main() {
-    int n=15, k=1;
-    while(n) {
-        if(k%2==0) {
-            cout<<k<<" ";
+int main()
+{
+    int n = 15, k = 1;
+    while (n)
+    {
+        if (k % 2 == 0)
+        {
+            cout << k << " ";
             k++;
             n--;
         }
-        else {
+        else
+        {
             k++;
         }
     }
-    cout<<endl;
+    cout << endl;
     return 0;
 }
