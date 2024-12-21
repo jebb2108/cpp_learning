@@ -2,45 +2,48 @@
 #include <cstdlib>
 #include <cmath>
 
-const int n = 12;
+const int n = 20;
 int oddNums[n + 1];
 
 bool isPrime(int num)
 {
-    for (int &x : oddNums)
+
+    if (num != 2 && num % 2 == 0)
     {
-        if (num % x == 0 && num != x)
+        return false;
+    }
+
+    for (int i = 2; i <= (int)sqrt(num); i++)
+    {
+        if (num % i == 0)
         {
+            // вывести, что n  не простое, так как делится на i
             return false;
         }
     }
-
+    // вывести что n простое.
     return true;
 }
 
 int makeOddArray()
 {
-    // Массив первых десяти простых чисел:
-    for (int k = 2, num = 3; k <= n; num++)
+    // Массив простых чисел:
+    for (int k = 0, num = 2; k < n + 1; num++)
     {
-        // Формуда простых чисел:
-        if (num * num % 24 == 1)
+        if (isPrime(num))
         {
-            if (num == 5 || num % 5 != 0)
-            {
-                oddNums[k] = num;
-                k++;
-            }
+            oddNums[k] = num;
+            k++;
         }
     }
+
     return 0;
 }
 
 int main()
 {
 
-    oddNums[0] = 2;
-    oddNums[1] = 3;
+    makeOddArray();
 
     // Создает цикл из пяти запросов:
     for (int step = 0, x1, x2; step < 5; step++)
@@ -62,8 +65,6 @@ int main()
             smallest = x2;
             biggest = x1;
         }
-
-        makeOddArray();
 
         // Объявляет перееменные меньшего и большего,
         // а также общее произведение простых чисел и, наконец, коэффицент цикла:
