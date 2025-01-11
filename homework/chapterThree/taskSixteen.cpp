@@ -9,10 +9,8 @@ int main()
         size=new int;
         *size = rand() % 10;
 
-        int *arr;
-        int *q;
-        arr = new int[*size];
-        q = &arr[*size-1];
+        int *arr = new int[*size];
+        int *q = &arr[*size-1];
 
 
         for (int k=0; k<*size/2; k++)
