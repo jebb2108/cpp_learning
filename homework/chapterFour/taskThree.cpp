@@ -32,5 +32,7 @@ int main()
     
     cout << fibs(n, prev, curr)<<endl;
 
+    delete i;
+
     return 0;
 }
