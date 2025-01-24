@@ -94,6 +94,5 @@ int main()
     delete objC;
     cout<<"Выполнение программы завершено\n";
     cout<<endl;
-
     return 0;
 }
