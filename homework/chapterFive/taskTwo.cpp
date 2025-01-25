@@ -34,7 +34,7 @@ class ComplexNumber
         ComplexNumber operator*(ComplexNumber obj)
         {
             ComplexNumber tmp;
-            auto result = multipleComplexNumbers(*this, obj);
+            auto result = multiplyComplexNumbers(*this, obj);
             tmp.real = result[0];
             tmp.imaginary = result[1];
             showEquation(*this, '*', obj, tmp);
@@ -48,9 +48,9 @@ class ComplexNumber
             tmpOne.real = obj.real;
             tmpOne.imaginary = -obj.imaginary;
             // Умножаю числитель на комплексно-сопряженное число:
-            auto numerator = multipleComplexNumbers((*this), tmpOne);
+            auto numerator = multiplyComplexNumbers((*this), tmpOne);
             // Умножаю знаменатель на комплексно-сопряженное число:
-            auto denominator = multipleComplexNumbers(obj, tmpOne);
+            auto denominator = multiplyComplexNumbers(obj, tmpOne);
             // Делю первый чиситель на знаменатель:
             result.real = (double)numerator[0] / denominator[0];
             result.real = round(result.real * 100) / 100;
@@ -62,7 +62,7 @@ class ComplexNumber
         }
 
     private:
-        std::array<int, 2> multipleComplexNumbers(ComplexNumber objA, ComplexNumber objB)
+        std::array<int, 2> multiplyComplexNumbers(ComplexNumber objA, ComplexNumber objB)
         {
             int a, b, c, d;
             // Умножаю первый множитель на множители objB:
