@@ -34,18 +34,53 @@ class ComplexNumber
         ComplexNumber operator*(ComplexNumber obj)
         {
             ComplexNumber tmp;
-            double a, b, c, d;
-            a=real*obj.real;
-            b=real*obj.imaginary;
-            c=imaginary*obj.real;
-            d=imaginary*obj.imaginary;
-            tmp.real=a+d*(-1);
-            tmp.imaginary=b+c;
+            auto result = multipleComplexNumbers(*this, obj);
+            tmp.real = result[0];
+            tmp.imaginary = result[1];
             showEquation(*this, '*', obj, tmp);
             return tmp;
         }
 
+        ComplexNumber operator/(ComplexNumber obj)
+        {
+            ComplexNumber tmpOne, result;
+            // Преобразовываю делитель в комплексно-сопряженное число:
+            tmpOne.real=obj.real;
+            tmpOne.imaginary=-obj.imaginary;
+            // Умножаю числитель на комплексно-сопряженное число:
+            auto numerator=multipleComplexNumbers((*this), tmpOne);
+            // Умножаю знаменатель на комплексно-сопряженное число:
+            auto denominator=multipleComplexNumbers(obj, tmpOne);
+            // Делю первый чиситель на знаменатель:
+            result.real=(double)numerator[0]/denominator[0];
+            result.real=round(result.real*100)/100;
+            // Делю второй числитель на знаменатель:
+            result.imaginary=(double)numerator[1]/denominator[0];
+            result.imaginary=round(result.imaginary*100)/100;
+            showEquation(*this, '/', obj, result);
+            return result;
+        }
+
         private:
+
+            std::array<int, 2> multipleComplexNumbers(ComplexNumber objA, ComplexNumber objB)
+            {
+                int a, b, c, d;
+                // Умножаю первый множитель на множители objB:
+                a=objA.real*objB.real;
+                b=objA.real*objB.imaginary;
+                // Умножаю второй множитель на множители objB:
+                c=objA.imaginary*objB.real;
+                d=objA.imaginary*objB.imaginary;
+                // Результат умножения комплексных чисел:
+                std::array<int, 2> result;
+                // Действительная часть массива:
+                result[0]=(a + d * (-1));
+                // Мнимая часть массива:
+                result[1]=(b + c);
+                return result;
+            }
+            
             void showEquation(ComplexNumber objA, char sign, ComplexNumber objB, ComplexNumber objC)
             {
                 using namespace std;
@@ -69,6 +104,9 @@ int main()
     cout<<endl;
 
     objC=objA*objB;
+    cout<<endl;
+
+    objC=objA/objB;
     cout<<endl;
 
     return 0;
