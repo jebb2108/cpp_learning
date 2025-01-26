@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 class ComplexNumber
 {
@@ -86,27 +87,75 @@ class ComplexNumber
             cout << objA.real << ((objA.imaginary >= 0) ? '+' : '-') << abs(objA.imaginary) << "i ";
             cout << sign << " " << objB.real << ((objB.imaginary >= 0) ? '+' : '-') << abs(objB.imaginary) << "i = ";
             objC.imaginary != 0 ? cout << objC.real << ((objC.imaginary > 0) ? '+' : '-') << abs(objC.imaginary) << "i" : cout << objC.real << endl;
+            cout<<endl;
+        }
+};
+
+class TrigonometricComplexNumber : public ComplexNumber
+{
+    public:
+        double cosine, sine;
+        TrigonometricComplexNumber(double r, double i) : ComplexNumber(r, i) 
+        {
+            cosine = calcCosine();
+            sine = calcSine();
+        }
+
+        void showAll()
+        {
+            using namespace std;
+            cout<<"Действительная часть комплексного числа: "<<real<<endl;
+            cout<<"Мнимая часть комплексного числа: "<<imaginary<<endl;
+            cout<<"Косинус комплексного числа: "<<cosine<<endl;
+            cout<<"Синус комплексного числа: "<<sine<<endl;
+            cout<<"Итоговое тригономическое представление: "<<getTrigComplexNumber()<<endl;
+        }
+
+    private:
+        double getModule()
+        {
+            return sqrt(pow(real,2)+pow(imaginary,2));
+        }
+        double calcSine()
+        {
+            return imaginary/getModule();
+        }
+        double calcCosine()
+        {
+            return real/getModule();
+        }
+        double getExp()
+        {
+            return calcCosine()+imaginary*calcSine();
+        }
+        double getTrigComplexNumber()
+        {
+            return getModule()*getExp();
         }
 };
 
 int main()
 {
     using namespace std;
-    ComplexNumber objA(3, -4);
-    ComplexNumber objB(5, -6);
+    ComplexNumber objA(3,-4);
+    ComplexNumber objB(5,-6);
     ComplexNumber objC;
 
-    objC = objA + objB;
-    cout << endl;
+    objC=objA+objB;
+    cout<<endl;
 
-    objC = objA - objB;
-    cout << endl;
+    objC=objA-objB;
+    cout<<endl;
 
-    objC = objA * objB;
-    cout << endl;
+    objC=objA*objB;
+    cout<<endl;
 
-    objC = objA / objB;
-    cout << endl;
+    objC=objA/objB;
+    cout<<endl;
+
+    TrigonometricComplexNumber objD(3,-4);
+    objD.showAll();
+    cout<<endl;
 
     return 0;
 }
