@@ -12,6 +12,8 @@ public:
     BinaryTree* right;
 
     BinaryTree(double num) : data(num), left(nullptr), right(nullptr) {}
+    
+    ~BinaryTree() { deleteAll(); }
 
     void addVal(double num)
     {
@@ -24,6 +26,19 @@ public:
         {
             if (right != nullptr) right->addVal(num);
             else right = new BinaryTree(num);
+        }
+    }
+    void deleteAll()
+    {
+        if (left != nullptr) {
+            left -> deleteAll();
+            delete left;
+            left = nullptr;
+        }
+        if (right != nullptr) {
+            right -> deleteAll();   
+            delete right;
+            right = nullptr;
         }
     }
 };
@@ -85,15 +100,18 @@ int main()
             cout << "Exiting...\n";
             break;
         }
-        if (!tree) tree = new BinaryTree(number);
+        if (!tree) { 
+            tree = new BinaryTree(number);
+            printTree(tree);
+        }
         else {
             tree -> addVal(number);
             cout << "Your tree looks this now: " << endl;
             printTree(tree);
         }
     }
-
-    delete tree;
-
+    
+    delete tree; 
+    cout << "Binary Tree successfully deleted.\n";
     return 0;
 }
